@@ -1,3 +1,4 @@
+<?php require_once("../config/db.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,10 +49,10 @@ $(document).ready(function(){
     var hash = window.location.hash;
     $('#myTab a[href="' + hash + '"]').tab('show');
     
-    $("#typed_text").typed({
-        strings: ["This is a system that allows users to create read update and delete information."],
-        typeSpeed: 0
-    });
+    // $("#typed_text").typed({
+    //     strings: ["This is a system that allows users to create read update and delete information."],
+    //     typeSpeed: 0
+    // });
     
     
 });
@@ -64,7 +65,7 @@ $(document).ready(function(){
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> 
       </button>
-      <a class="navbar-brand home" href="#" >Shopify Courses</a>
+      <a class="navbar-brand home" href="#" >Shopify</a>
     </div>
     
   </div>
@@ -85,12 +86,33 @@ $(document).ready(function(){
        </div>
        
        <div id="table" class="tab-pane fade">
-       
+       <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Producty Category</th>
+            <th scope="col">Product Price</th>
+            <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $sql = "SELECT * FROM products";
+                $result = mysqli_query($connection, $sql); 
+                if (mysqli_num_rows($result ) > 0) {
+                // output data of each row
+                while($row = mysqli_fetch_assoc($result)) {
+                    echo '<tr>
+                        <td>' . $row["prod_name"] . '</td>
+                        <td>' . $row["prod_category"] . '</td>
+                        <td>' . $row["prod_price"] . '</td>
+                        <td><a href="../scripts/update.php?id=' . $row["ID"] . '" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Edit</a>
+                        <a href="../scripts/delete.php?id=' . $row["ID"] . '" class="btn btn-danger btn-lg" role="button" aria-pressed="true">Delete</a></td>
+                    </tr>';
+            }} ?>
+        </tbody>
+        </table>
        </div>
-       
-      
     </div>
-        
 </div> 
 
 

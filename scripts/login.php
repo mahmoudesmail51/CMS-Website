@@ -13,7 +13,7 @@
         $sql_query = "SELECT * FROM signup WHERE email = '{$email_login}' ";
         $query = mysqli_query($connection, $sql_query);
         $count = mysqli_num_rows($query);
-        
+        // echo $email_login . " " . $pass_login;       
         if(!$query){
             die("QUERY FAILED. " . mysqli_error($connection));
         }

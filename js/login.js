@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#log_in").click(function(e){
-        
+        alert("JSHGJHGDJHGDJH");
         var email = $("#email_login").val();
         var password = $("#password_login").val();
         
@@ -32,7 +32,7 @@ $(document).ready(function(){
                 type: "POST",
                 data: login_data,
                 success: function(data){
-                    
+                    alert("Logged in");
                 }
             });
             

@@ -103,5 +103,7 @@ $(document).ready(function(){
 
 <script src="./js/reg.js"></script>
 <script src="./js/login.js"></script>
+<script src="./js/add_product.js"></script>
+
 </body>
 </html>
